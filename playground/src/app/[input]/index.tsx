@@ -1,5 +1,5 @@
 import { type FC, useEffect, useState } from 'react'
-import { Link, useParams, useRouteError } from 'react-router-dom'
+import { Link, useParams, useRouteError } from 'react-router'
 
 export const Component: FC = () => {
   const params = useParams()
