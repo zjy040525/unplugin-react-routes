@@ -4,9 +4,9 @@ import { type createStructure } from './structure'
 export const createAST = <T extends ReturnType<typeof createStructure>>(
   sources: T,
 ) => {
-  const createRouter = (deepNode: T) => {
+  const createRoutesSchema = (deepNode: T) => {
     return deepNode.map((node) => {
-      const propertyAssignments = [
+      const pairs = [
         ts.factory.createPropertyAssignment(
           ts.factory.createIdentifier('path'),
           ts.factory.createStringLiteral(node.browserPath),
@@ -34,20 +34,28 @@ export const createAST = <T extends ReturnType<typeof createStructure>>(
           ),
         ),
       ]
+
       if (node.children.length) {
-        propertyAssignments.push(
+        pairs.push(
           ts.factory.createPropertyAssignment(
             ts.factory.createIdentifier('children'),
             ts.factory.createArrayLiteralExpression(
-              createRouter(node.children as T),
+              createRoutesSchema(node.children as T),
               true,
             ),
           ),
         )
       }
-      return ts.factory.createObjectLiteralExpression(propertyAssignments, true)
+
+      return ts.factory.createObjectLiteralExpression(pairs, true)
     })
   }
+
+  const routesSchema = ts.factory.createArrayLiteralExpression(
+    createRoutesSchema(sources),
+    true,
+  )
+
   return [
     ts.factory.createVariableStatement(
       [ts.factory.createToken(ts.SyntaxKind.ExportKeyword)],
@@ -57,10 +65,7 @@ export const createAST = <T extends ReturnType<typeof createStructure>>(
             ts.factory.createIdentifier('routes'),
             void 0,
             void 0,
-            ts.factory.createArrayLiteralExpression(
-              createRouter(sources),
-              true,
-            ),
+            routesSchema,
           ),
         ],
         ts.NodeFlags.Const,
