@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm run typed-check && vite build",
+    "dev": "vite",
+    "typed-check": "tsc -b"
+  },
+  "dependencies": {
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-router-dom": "6.28.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react-swc": "3.7.2",
+    "typescript": "5.7.2",
+    "vite": "6.0.3",
+    "vite-plugin-inspect": "0.10.3"
+  },
+  "volta": {
+    "extends": "../package.json"
+  }
+}
