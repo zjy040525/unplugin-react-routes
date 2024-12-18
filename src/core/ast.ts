@@ -7,10 +7,15 @@ export const createAST = <T extends ReturnType<typeof createStructure>>(
   const createRoutesSchema = (deepNode: T) => {
     return deepNode.map((node) => {
       const pairs = [
-        ts.factory.createPropertyAssignment(
-          ts.factory.createIdentifier('path'),
-          ts.factory.createStringLiteral(node.browserPath),
-        ),
+        node.browserPath === '_index'
+          ? ts.factory.createPropertyAssignment(
+              ts.factory.createIdentifier('index'),
+              ts.factory.createTrue(),
+            )
+          : ts.factory.createPropertyAssignment(
+              ts.factory.createIdentifier('path'),
+              ts.factory.createStringLiteral(node.browserPath),
+            ),
         ts.factory.createMethodDeclaration(
           void 0,
           void 0,

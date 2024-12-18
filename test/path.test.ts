@@ -22,6 +22,22 @@ describe.concurrent('path resolve', () => {
         source: 'playground/src/app/[input]/index.tsx',
         metadata: void 0,
       },
+      {
+        importPath: path.join(
+          process.cwd(),
+          'playground/src/app/_index/index.tsx',
+        ),
+        source: 'playground/src/app/_index/index.tsx',
+        metadata: void 0,
+      },
+      {
+        importPath: path.join(
+          process.cwd(),
+          'playground/src/app/[input]/_index/index.tsx',
+        ),
+        source: 'playground/src/app/[input]/_index/index.tsx',
+        metadata: void 0,
+      },
     ])
     expect(createImportPath([])).toEqual([])
   })
@@ -43,6 +59,16 @@ describe.concurrent('path resolve', () => {
         browserPath: '/:input',
         metadata: void 0,
         source: 'playground/src/app/[input]/index.tsx',
+      },
+      {
+        browserPath: '/_index',
+        metadata: void 0,
+        source: 'playground/src/app/_index/index.tsx',
+      },
+      {
+        browserPath: '/:input/_index',
+        metadata: void 0,
+        source: 'playground/src/app/[input]/_index/index.tsx',
       },
     ])
     expect(createBrowserPath([], 'playground/src/app', 'index.tsx')).toEqual([])
@@ -73,6 +99,24 @@ describe.concurrent('path resolve', () => {
         ),
         metadata: void 0,
         source: 'playground/src/app/[input]/index.tsx',
+      },
+      {
+        browserPath: '/_index',
+        importPath: path.join(
+          process.cwd(),
+          'playground/src/app/_index/index.tsx',
+        ),
+        metadata: void 0,
+        source: 'playground/src/app/_index/index.tsx',
+      },
+      {
+        browserPath: '/:input/_index',
+        importPath: path.join(
+          process.cwd(),
+          'playground/src/app/[input]/_index/index.tsx',
+        ),
+        metadata: void 0,
+        source: 'playground/src/app/[input]/_index/index.tsx',
       },
     ]
 

@@ -22,13 +22,34 @@ test("react-router's route object schema", () => {
       children: [
         {
           browserPath: ':input',
-          children: [],
+          children: [
+            {
+              browserPath: '_index',
+              children: [],
+              importPath: path.join(
+                process.cwd(),
+                'playground/src/app/[input]/_index/index.tsx',
+              ),
+              metadata: void 0,
+              source: 'playground/src/app/[input]/_index/index.tsx',
+            },
+          ],
           importPath: path.join(
             process.cwd(),
             'playground/src/app/[input]/index.tsx',
           ),
           metadata: void 0,
           source: 'playground/src/app/[input]/index.tsx',
+        },
+        {
+          browserPath: '_index',
+          children: [],
+          importPath: path.join(
+            process.cwd(),
+            'playground/src/app/_index/index.tsx',
+          ),
+          metadata: void 0,
+          source: 'playground/src/app/_index/index.tsx',
         },
       ],
       importPath: path.join(process.cwd(), 'playground/src/app/index.tsx'),
