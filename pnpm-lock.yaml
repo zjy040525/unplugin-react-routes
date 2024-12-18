@@ -17,9 +17,6 @@ importers:
       react-router:
         specifier: ^7
         version: 7.0.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      react-router-dom:
-        specifier: ^6
-        version: 6.28.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       tsup:
         specifier: 8.3.5
         version: 8.3.5(@swc/core@1.10.1)(jiti@2.4.1)(postcss@8.4.49)(typescript@5.7.2)
@@ -91,9 +88,9 @@ importers:
       react-dom:
         specifier: 19.0.0
         version: 19.0.0(react@19.0.0)
-      react-router-dom:
-        specifier: 6.28.0
-        version: 6.28.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react-router:
+        specifier: 7.0.2
+        version: 7.0.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     devDependencies:
       '@types/react':
         specifier: ^19
@@ -589,10 +586,6 @@ packages:
 
   '@polka/url@1.0.0-next.28':
     resolution: {integrity: sha512-8LduaNlMZGwdZ6qWrKlfa+2M4gahzFkprZiAt2TF8uS0qQgBizKXpXURqvTJ4WtmupWxaLqjRb2UCTe72mu+Aw==}
-
-  '@remix-run/router@1.21.0':
-    resolution: {integrity: sha512-xfSkCAchbdG5PnbrKqFWwia4Bi61nH+wm8wLEqfHDyp7Y3dZzgqS2itV8i4gAq9pC2HsTpwyBC6Ds8VHZ96JlA==}
-    engines: {node: '>=14.0.0'}
 
   '@rollup/pluginutils@5.1.4':
     resolution: {integrity: sha512-USm05zrsFxYLPdWWq+K3STlWiT/3ELn3RcV5hJMghpeAIhxfsUIg6mt12CBJBInWMV4VneoV7SfGv8xIwo2qNQ==}
@@ -1382,19 +1375,6 @@ packages:
     peerDependencies:
       react: ^19.0.0
 
-  react-router-dom@6.28.0:
-    resolution: {integrity: sha512-kQ7Unsl5YdyOltsPGl31zOjLrDv+m2VcIEcIHqYYD3Lp0UppLjrzcfJqDJwXxFw3TH/yvapbnUvPlAj7Kx5nbg==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: '>=16.8'
-      react-dom: '>=16.8'
-
-  react-router@6.28.0:
-    resolution: {integrity: sha512-HrYdIFqdrnhDw0PqG/AKjAqEqM7AvxCz0DQ4h2W8k6nqmc5uRBYDag0SBxx9iYz5G8gnuNVLzUe13wl9eAsXXg==}
-    engines: {node: '>=14.0.0'}
-    peerDependencies:
-      react: '>=16.8'
-
   react-router@7.0.2:
     resolution: {integrity: sha512-m5AcPfTRUcjwmhBzOJGEl6Y7+Crqyju0+TgTQxoS4SO+BkWbhOrcfZNq6wSWdl2BBbJbsAoBUb8ZacOFT+/JlA==}
     engines: {node: '>=20.0.0'}
@@ -2013,8 +1993,6 @@ snapshots:
   '@pkgr/core@0.1.1': {}
 
   '@polka/url@1.0.0-next.28': {}
-
-  '@remix-run/router@1.21.0': {}
 
   '@rollup/pluginutils@5.1.4(rollup@4.28.1)':
     dependencies:
@@ -2741,18 +2719,6 @@ snapshots:
     dependencies:
       react: 19.0.0
       scheduler: 0.25.0
-
-  react-router-dom@6.28.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
-    dependencies:
-      '@remix-run/router': 1.21.0
-      react: 19.0.0
-      react-dom: 19.0.0(react@19.0.0)
-      react-router: 6.28.0(react@19.0.0)
-
-  react-router@6.28.0(react@19.0.0):
-    dependencies:
-      '@remix-run/router': 1.21.0
-      react: 19.0.0
 
   react-router@7.0.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
