@@ -19,11 +19,7 @@ export const createStructure = <
   })
   const res: DeepModule<T>[] = []
   sources.forEach((source) => {
-    if (
-      (source.metadata?.nested === void 0 ||
-        source.metadata?.nested === true) &&
-      source.browserPath !== '/'
-    ) {
+    if (source.browserPath !== '/') {
       const pathSplit = source.browserPath.split('/').filter(Boolean)
       const parentPath = '/' + pathSplit.slice(0, -1).join('/')
       if (sourceMap[parentPath]) {

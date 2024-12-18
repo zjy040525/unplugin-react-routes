@@ -1,13 +1,12 @@
 import { Link, Outlet } from 'react-router'
 
-const str = Date.now().toString()
-
 export const Component = () => {
   return (
     <>
-      <h1>
-        <Link to={`/${str}`}>/{str}</Link>
-      </h1>
+      <h2>App</h2>
+      <p>
+        <Link to="/nested-routes">Nested Route</Link>
+      </p>
       <Outlet />
     </>
   )

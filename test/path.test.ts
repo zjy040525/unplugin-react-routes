@@ -8,11 +8,10 @@ describe.concurrent('path resolve', () => {
     const directory = createDirectory('playground/src/app', 'index.tsx')
     const importPath = createImportPath(directory)
 
-    expect(importPath).toEqual<typeof importPath>([
+    expect(importPath).toStrictEqual<typeof importPath>([
       {
         importPath: path.join(process.cwd(), 'playground/src/app/index.tsx'),
         source: 'playground/src/app/index.tsx',
-        metadata: void 0,
       },
       {
         importPath: path.join(
@@ -20,10 +19,23 @@ describe.concurrent('path resolve', () => {
           'playground/src/app/[input]/index.tsx',
         ),
         source: 'playground/src/app/[input]/index.tsx',
-        metadata: void 0,
+      },
+      {
+        importPath: path.join(
+          process.cwd(),
+          'playground/src/app/_index/index.tsx',
+        ),
+        source: 'playground/src/app/_index/index.tsx',
+      },
+      {
+        importPath: path.join(
+          process.cwd(),
+          'playground/src/app/[input]/_index/index.tsx',
+        ),
+        source: 'playground/src/app/[input]/_index/index.tsx',
       },
     ])
-    expect(createImportPath([])).toEqual([])
+    expect(createImportPath([])).toStrictEqual([])
   })
   it('browser', () => {
     const directory = createDirectory('playground/src/app', 'index.tsx')
@@ -33,19 +45,27 @@ describe.concurrent('path resolve', () => {
       'index.tsx',
     )
 
-    expect(browserPath).toEqual<typeof browserPath>([
+    expect(browserPath).toStrictEqual<typeof browserPath>([
       {
         browserPath: '/',
-        metadata: void 0,
         source: 'playground/src/app/index.tsx',
       },
       {
         browserPath: '/:input',
-        metadata: void 0,
         source: 'playground/src/app/[input]/index.tsx',
       },
+      {
+        browserPath: '/_index',
+        source: 'playground/src/app/_index/index.tsx',
+      },
+      {
+        browserPath: '/:input/_index',
+        source: 'playground/src/app/[input]/_index/index.tsx',
+      },
     ])
-    expect(createBrowserPath([], 'playground/src/app', 'index.tsx')).toEqual([])
+    expect(
+      createBrowserPath([], 'playground/src/app', 'index.tsx'),
+    ).toStrictEqual([])
   })
   it('mixin', () => {
     const directory = createDirectory('playground/src/app', 'index.tsx')
@@ -62,7 +82,6 @@ describe.concurrent('path resolve', () => {
       {
         browserPath: '/',
         importPath: path.join(process.cwd(), 'playground/src/app/index.tsx'),
-        metadata: void 0,
         source: 'playground/src/app/index.tsx',
       },
       {
@@ -71,14 +90,29 @@ describe.concurrent('path resolve', () => {
           process.cwd(),
           'playground/src/app/[input]/index.tsx',
         ),
-        metadata: void 0,
         source: 'playground/src/app/[input]/index.tsx',
+      },
+      {
+        browserPath: '/_index',
+        importPath: path.join(
+          process.cwd(),
+          'playground/src/app/_index/index.tsx',
+        ),
+        source: 'playground/src/app/_index/index.tsx',
+      },
+      {
+        browserPath: '/:input/_index',
+        importPath: path.join(
+          process.cwd(),
+          'playground/src/app/[input]/_index/index.tsx',
+        ),
+        source: 'playground/src/app/[input]/_index/index.tsx',
       },
     ]
 
     expect(
       createBrowserPath(importPath, 'playground/src/app', 'index.tsx'),
-    ).toEqual<Mixin>(mixinOut)
-    expect(createImportPath(browserPath)).toEqual<Mixin>(mixinOut)
+    ).toStrictEqual<Mixin>(mixinOut)
+    expect(createImportPath(browserPath)).toStrictEqual<Mixin>(mixinOut)
   })
 })
