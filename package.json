@@ -1,6 +1,6 @@
 {
   "name": "unplugin-react-routes",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "File-based routing, similar to Next.js App Router.",
   "keywords": [
     "unplugin",
