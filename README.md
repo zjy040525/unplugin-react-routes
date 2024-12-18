@@ -86,20 +86,6 @@ The following optional exports are available.
 
 [react-router](https://reactrouter.com/start/framework/route-module#errorboundary)
 
-### metadata (experimental)
-
-```ts
-import { type Metadata } from 'unplugin-react-routes/types'
-
-export const metadata: Metadata = {
-  // Nested routing.
-  // If true, it will end up in a tree structure with the directory structure.
-  // If false, it will be at the same level as the parent route.
-  // Default: true
-  nested: true,
-}
-```
-
 ## Configuration
 
 The following is the default values of the plugin

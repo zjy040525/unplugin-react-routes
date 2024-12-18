@@ -16,7 +16,7 @@ test("react-router's route object schema", () => {
 
   const structure = createStructure(browserPath)
 
-  expect(structure).toEqual<typeof structure>([
+  expect(structure).toStrictEqual<typeof structure>([
     {
       browserPath: '/',
       children: [
@@ -30,7 +30,6 @@ test("react-router's route object schema", () => {
                 process.cwd(),
                 'playground/src/app/[input]/_index/index.tsx',
               ),
-              metadata: void 0,
               source: 'playground/src/app/[input]/_index/index.tsx',
             },
           ],
@@ -38,7 +37,6 @@ test("react-router's route object schema", () => {
             process.cwd(),
             'playground/src/app/[input]/index.tsx',
           ),
-          metadata: void 0,
           source: 'playground/src/app/[input]/index.tsx',
         },
         {
@@ -48,12 +46,10 @@ test("react-router's route object schema", () => {
             process.cwd(),
             'playground/src/app/_index/index.tsx',
           ),
-          metadata: void 0,
           source: 'playground/src/app/_index/index.tsx',
         },
       ],
       importPath: path.join(process.cwd(), 'playground/src/app/index.tsx'),
-      metadata: void 0,
       source: 'playground/src/app/index.tsx',
     },
   ])
