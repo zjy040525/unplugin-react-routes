@@ -76,19 +76,118 @@ createRoot(document.getElementById('root')!).render(
 )
 ```
 
-Create `app` folder under `src`, move `App.tsx` under app and rename it to `index.tsx`, taking care to adjust relative paths.
+Create an `app` folder under `src`, move `App.tsx` to app and rename it to `index.tsx`, taking care to adjust the relative path of the import statement.
 
-To get the page to display in a browser, you also need to export the `Component`.
+Change export statement.
 
-The following optional exports are available.
+```tsx
+// index.tsx
 
-### ErrorBoundary
+// export default App
 
-[react-router](https://reactrouter.com/start/framework/route-module#errorboundary)
+export const Component = () => {
+  /* Code for the `App` component. */
+}
+```
+
+Start the development server, if it is already started, restart it.
+
+You should now see what `index.tsx` presents in your browser.
+
+You can also export these components:
+
+```tsx
+// https://reactrouter.com/start/framework/route-module#errorboundary
+export const ErrorBoundary = () => {
+  /* code */
+}
+```
+
+## Routing
+
+The following routes have been implemented
+
+### Index Routes
+
+Index routes render into their parent's <Outlet/> at their parent's URL (like a default child route).
+
+[react-router](https://reactrouter.com/start/library/routing#index-routes)
+
+Usage: `/src/app/_index/index.tsx`
+
+```tsx
+import { RouteObject } from 'react-router'
+
+// The generated structure looks like this
+export default [
+  {
+    path: '/',
+    children: [
+      {
+        index: true,
+      },
+    ],
+  },
+] satisfies RouteObject[]
+```
+
+### Nested Routes
+
+Nesting based on directory paths.
+
+Usage: `/src/app/a/b/c/index.tsx`
+
+```tsx
+import { RouteObject } from 'react-router'
+
+// The generated structure looks like this
+export default [
+  {
+    path: '/',
+    children: [
+      {
+        path: 'a',
+        children: [
+          {
+            path: 'b',
+            children: [
+              {
+                path: 'c',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+] satisfies RouteObject[]
+```
+
+### Dynamic Segments/Routes
+
+Using a pair of `[]` wrappers, the internal name will be used as the name of the property fetched in `useParams`.
+
+Usage: `/src/app/[postId]/index.tsx`
+
+```tsx
+import { RouteObject } from 'react-router'
+
+// The generated structure looks like this
+export default [
+  {
+    path: '/',
+    children: [
+      {
+        path: ':postId',
+      },
+    ],
+  },
+] satisfies RouteObject[]
+```
 
 ## Configuration
 
-The following is the default values of the plugin
+The following is the default values of the plugin.
 
 ```ts
 reactRoutes({
